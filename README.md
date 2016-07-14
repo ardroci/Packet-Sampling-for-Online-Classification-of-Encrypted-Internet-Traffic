@@ -1,1 +1,1 @@
-# Amostragem de Pacotes para Classificacao Online de Tráfego Internet Cifrado
+# Amostragem de Pacotes para Classificação Online de Tráfego Internet Cifrado
