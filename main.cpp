@@ -1,3 +1,9 @@
+/**
+ @file main.cpp
+ @Author Ricardo Oliveira
+ @date 2016
+ */
+
 /***********************
  Systematic sampling
  ***********************
@@ -44,7 +50,7 @@
  ---------------+------------------------+-------------------
  random        |  packet position       |  packet counter,
  n-out-of-N    |  Sampling pattern      |  random numbers
- | (random number list)   |
+               | (random number list)   |
  ---------------+------------------------+-------------------
  uniform       |        Sampling        |  random function
  probabilistic |      probability       |
@@ -82,7 +88,7 @@
 #include "Multiadaptive_Sampling.hpp"
 #include "Sniffer.hpp"
 
-//this is the preferred way of signaling to the compiler to use large file support
+///this is the preferred way of signaling to the compiler to use large file support
 #define _FILE_OFFSET_BITS   64
 
 using namespace std;
@@ -259,149 +265,5 @@ int main(int argc, char** argv) {
                                              verbose_flag                    // dissect packet
                                              );
     }
-    
-    /*
-     switch (x) {
-     case 1:
-     { Sniffer sniffer(_input_file,
-     "../outputs/Out_Sniff.pcap",
-     false // dissect packet
-     );
-     sniffer.start();
-     }
-     break;
-     case 2:
-     
-     { Systematic_Sampling__Count_Based systematic(_input_file,
-     "../outputs/Out_Systematic__Count_Based.pcap",
-     false,          // dissect packet
-     4               // count-based interval
-     );
-     
-     }
-     break;
-     case 3:
-     { Systematic_Sampling__Time_Driven systematic(_input_file,
-     "../outputs/Out_Systematic__Time_Driven.pcap",
-     false,          // dissect packet
-     0.0005             // time-driven interval
-     );
-     
-     }
-     break;
-     case 4:
-     {Simple_Random simple_random(_input_file,
-     "../outputs/Out_Simple_Random.pcap",
-     false,                  // dissect packet
-     4,                      // number_of_trials
-     0.5,                    // probability of a trial generating true
-     100                     // produce x random numbers at a time
-     );
-     
-     
-     }
-     break;
-     case 5:
-     {Random_Aditive__Count_Based random_additive(_input_file,
-     "../outputs/Out_Random_Aditive.pcap",
-     false,             // dissect packet
-     100,               // produce x random numbers at a time
-     4                  // average_sampling_rate -> on average each sampling will occur every x packets
-     );
-     
-     }
-     break;
-     case 6:
-     { Stratified_Random_Sampling stratified(_input_file,
-     "../outputs/Out_Stratified_Random.pcap",
-     false ,                  // dissect packet
-     500000                   // sample size
-     );
-     
-     }
-     break;
-     case 7:
-     { Multiadaptive_Sampling multiadaptive(_input_file,
-     "../outputs/Out_MultiAditive.pcap",
-     false                    // dissect packet
-     );
-     
-     }
-     break;
-     default:
-     break;
-     }
-     */
     return 0;
 }
-
-
-
-
-
-
-/*
- 
- if(!_lastest_reference_parameters.empty() && !_intervals_between_samples.empty()){
- X_p = Predictor();
- }
- if (_new_Sample_Complete) {
- if(_initial_setting < 5){
- _lastest_reference_parameters.push_back(reference_Parameter_Hash_Table());
- _intervals_between_samples.push_back((_sample_init + _next_interval_between_samples) - pkthdr->ts.tv_sec);
- //delete_all_from_Hash_Table();
- ++_initial_setting;
- puts("initial setup");
- }else{
- double S = reference_Parameter_Hash_Table();
- double m = 1.0;
- if (S != 0) {
- m = X_p/S;
- //cout << "m = " << m<<endl;
- //cout << "X_p = " << X_p<<endl;
- 
- }
- if (m < _m_min) { //underestimation
- //puts("underestimation");
- _next_interval_between_samples = m * _interval_between_samples;
- _next_sample_size = m * _sample_size;
- //cout << "_next_interval_between_samples "<< _next_interval_between_samples << endl;
- //cout << "_next_sample_size"<< _next_sample_size << endl;
- }
- if (m > _m_min && m < _m_max) { //correct estimation
- //puts("correct estimation");
- _next_interval_between_samples = _interval_between_samples;
- _next_sample_size = _sample_size;
- }
- if (m>_m_max) { //overestimation
- //puts("overestimation");
- _next_interval_between_samples = 2 * _interval_between_samples;
- k = 0.15;
- _next_sample_size = (1+k) * _sample_size;
- }
- //interval between samples thresholds
- if (_next_interval_between_samples < _min_interval_between_samples) {
- _next_interval_between_samples = _min_interval_between_samples;
- }
- if (_next_interval_between_samples > _max_interval_between_samples) {
- _next_interval_between_samples = _max_interval_between_samples;
- }
- //sampling size thresholds
- if (_next_sample_size < _min_next_sample_size) {
- _next_sample_size = _min_next_sample_size;
- }
- if (_next_sample_size > _max_next_sample_size) {
- _next_sample_size = _max_next_sample_size;
- }
- _interval_between_samples = _next_interval_between_samples;
- _sample_size = _next_sample_size;
- //cout << "new _interval_between_samples "<< _interval_between_samples << endl;
- //cout << "new _sample_size "<< _sample_size << endl;
- 
- //Update vectors T and X
- //NAO SEI COMO FAZER ESSE UDPATE
- }
- delete_all_from_Hash_Table();
- _new_Sample_Complete = false;
- }
- */

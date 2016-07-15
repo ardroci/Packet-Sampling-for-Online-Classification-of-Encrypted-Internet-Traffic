@@ -1,26 +1,27 @@
-//
-//  Sniffer.cpp
-//  Projeto
-//
-//  Created by Ricardo Oliveira on 18/04/16.
-//  Copyright © 2016 Ricardo Oliveira. All rights reserved.
-//
+/**
+ @file Sniffer.cpp
+ @Author Ricardo Oliveira
+ @date 2016
+ */
 
 #include "Sniffer.hpp"
 
-Sniffer::Sniffer(const string input_file,const string output_file, const bool d):  _input_directory(input_file), _output_file(output_file){
+Sniffer::Sniffer(const string input_file,const string output_file, const bool d):  _input_directory(input_file), _output_file(output_file)
+{
     get_input_files();
     statistics = new Statistics();
     _dissect=d;
     
     puts("\n\nSniffer - default constructor");
 }
-Sniffer::Sniffer(const pcap_dumper_t * _dumpfile, const pcap_t * _descr, const char * _dev){
+Sniffer::Sniffer(const pcap_dumper_t * _dumpfile, const pcap_t * _descr, const char * _dev)
+{
     get_input_files();
     statistics = new Statistics();
     
 }
-Sniffer::~Sniffer(){
+Sniffer::~Sniffer()
+{
     if (_dumpfile!=NULL) {
         pcap_dump_flush(_dumpfile);
         pcap_dump_close(_dumpfile);
@@ -35,7 +36,8 @@ Sniffer::~Sniffer(){
     }
 }
 
-void Sniffer::start(){
+void Sniffer::start()
+{
     bool done = false;
     if (_files.empty()) {
         open_device_live_capture();
@@ -79,7 +81,8 @@ void Sniffer::start(){
     //statistics->check_sample_time_throughout();
     statistics->print_stats();
 }
-void Sniffer::lookup_for_device(){
+void Sniffer::lookup_for_device()
+{
     char * errbuf = NULL;
     //find the default device on which to capture
     char * dev = pcap_lookupdev(errbuf);
@@ -93,12 +96,12 @@ void Sniffer::lookup_for_device(){
 
 }
 
-void Sniffer::open_device_live_capture(){
+void Sniffer::open_device_live_capture()
+{
     /*
      pcap_open_live() is used to obtain a packet capture handle to look at packets on the network. device is a string that specifies the network device to open; on Linux systems with 2.2 or later kernels, a device argument of "any" or NULL can be used to capture packets from all interfaces.
      
      
-     open the device for Sniffering.
      pcap_t *pcap_open_live(char *device,int snaplen, int prmisc,int to_ms, char *ebuf)
      snaplen - maximum size of packets to capture in bytes
      promisc - set card in promiscuous mode? that causes the controller to pass all traffic it receives to the central processing unit (CPU) rather than passing only the frames that the controller is intended to receive
@@ -106,6 +109,7 @@ void Sniffer::open_device_live_capture(){
      errbuf  - if something happens, place error string here
      Note if you change "prmisc" param to anything other than zero, you will get all packets your device sees, whether they are intendeed for you or
      not!! Be sure you know the rules of the network you are running on before you set your card in promiscuous mode!!
+
      */
     char * errbuf = NULL;
     lookup_for_device();
@@ -119,7 +123,8 @@ void Sniffer::open_device_live_capture(){
     _descr = descr;
     //return descr;
 }
-void Sniffer::open_device_offline_capture(const string input_file){
+void Sniffer::open_device_offline_capture(const string input_file)
+{
     
     cout << "Offline capture" << endl;
     char * errbuf = NULL;
@@ -132,7 +137,8 @@ void Sniffer::open_device_offline_capture(const string input_file){
     _descr = descr;
     //return descr;
 }
-void Sniffer::open_save_dump_file(const char *fname){
+void Sniffer::open_save_dump_file(const char *fname)
+{
     /* Open the dump save file
      pcap_dumper_t *pcap_dump_open(pcap_t *p, const char *fname);
      pcap_dump_open() is called to open a ''savefile'' for writing. fname specifies the name of the file to open. The file will have the same format as those used by tcpdump(1) and tcpslice(1). The name "-" in a synonym for stdout.
@@ -148,29 +154,17 @@ void Sniffer::open_save_dump_file(const char *fname){
     _dumpfile = dumpfile;
     //return dumpfile;
 }
-void Sniffer::select_packet(u_char *packetData, const struct pcap_pkthdr *pkthdr, const u_char *packet){
+void Sniffer::select_packet(u_char *packetData, const struct pcap_pkthdr *pkthdr, const u_char *packet)
+{
     pcap_dump(packetData, pkthdr, packet);
     statistics->increment_packet_Selected(pkthdr);
 }
 
-void Sniffer::packet_processing (){//int cnt, pcap_handler callback, u_char *packet){
-    /*
-     start packet processing loop
-     int pcap_loop(pcap_t *p, int cnt, pcap_handler callback, u_char *packet);
-     pcap_loop() processes packets from a live capture or ``savefile'' until cnt packets are processed, the end of the ``savefile'' is reached when reading from a ``savefile'', pcap_breakloop() is called, or an error occurs. It does not return when live read timeouts occur. A value of -1 or 0 for cnt is equivalent to infinity, so that packets are processed until another ending condition occurs.
-     Returns
-     pcap_loop() returns 0 if cnt is exhausted, -1 if an error occurs, or -2 if the loop terminated due to a call to pcap_breakloop() before any packets were processed. It does not return when live read timeouts occur; instead, it attempts to read more packets.
-     */
-    /*if (pcap_loop(_descr, cnt, callback, packet) < 0) {
-     throw runtime_error("Error: pcap_packet_processing () failed:");
-     }
-     printf("\ndone...\n\n**************************\nTotal Packets %d\nTCP Packets %d\nUDP Packets %d \nICMP Packets %d\n\
-     **************************\n\n",_packetCount, _tcpPacketCount,_udpPacketCount,_icmpPacketCount);
-     pcap_dump_close(_dumpfile);
-     */
+void Sniffer::packet_processing ()
+{
     
-    const struct pcap_pkthdr *pkthdr;   // = new struct pcap_pkthdr;
-    const u_char *packet;               // = new u_char;
+    const struct pcap_pkthdr *pkthdr;
+    const u_char *packet;
     
     int iRes;
     
@@ -197,7 +191,8 @@ void Sniffer::packet_processing (){//int cnt, pcap_handler callback, u_char *pac
     
 }
 
-void Sniffer::dissect_packet( const struct pcap_pkthdr *pkthdr, const u_char *packet){
+void Sniffer::dissect_packet( const struct pcap_pkthdr *pkthdr, const u_char *packet)
+{
     const struct ether_header* ethernetHeader;
     ethernetHeader = (struct ether_header*)packet;
     // Do a couple of checks to see what packet type we have..
@@ -258,14 +253,16 @@ void Sniffer::dissect_packet( const struct pcap_pkthdr *pkthdr, const u_char *pa
     }
     
 }
-inline void Sniffer::printData(const u_int stop, const u_char* data){
+inline void Sniffer::printData(const u_int stop, const u_char* data)
+{
     for (u_int i = 0; i < stop; i++) {
         printf("%.2x ",data[i]);
     }
     printf("\n");
 }
 
-void Sniffer::get_input_files(){
+void Sniffer::get_input_files()
+{
     if (_input_directory.empty()) {
         return;
     }
@@ -293,8 +290,3 @@ void Sniffer::get_input_files(){
     
     
 }
-/*  Class statics need to be visible to the linker by defining them in the cpp as follow    */
-//long long int  Sniffer::_packet_Count = 0;
-
-
-
