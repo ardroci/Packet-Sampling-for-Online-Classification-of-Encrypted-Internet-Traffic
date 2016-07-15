@@ -62,10 +62,8 @@ Multiadaptive_Sampling::~Multiadaptive_Sampling(){
 }
 double Multiadaptive_Sampling::Predictor(){
 
-    
     double forecast_reference_parameter = 0.0;
     u_long N = _lastest_reference_parameters.size()-1;
-    ////cout << N << endl;
     
     double aux_0 = _lastest_reference_parameters.at(N);
     double aux_1 = (_intervals_between_samples.at(N)-_intervals_between_samples.at(N-1))/(N-1);
@@ -73,7 +71,6 @@ double Multiadaptive_Sampling::Predictor(){
     double denom = _intervals_between_samples.at(N)-_intervals_between_samples.at(0);
     
     forecast_reference_parameter = aux_0 + abs(aux_1 * (num / denom));
-
     
     return forecast_reference_parameter;
 }
@@ -144,17 +141,14 @@ void Multiadaptive_Sampling::select_packet(u_char *userData,const struct pcap_pk
             }
 
             if (m < _m_min) { //underestimation
-                puts("underestimation");
                 _next_interval_between_samples = m * _current_interval_between_samples;
                 _next_sample_size = m * _current_sample_size;
             }
             if (m >= _m_min && m <= _m_max) { //correct estimation
-                puts("correct estimation");
                 _next_interval_between_samples = _current_interval_between_samples;
                 _next_sample_size = _current_sample_size;
             }
             if (m>_m_max) { //overestimation
-                puts("overestimation");
                 _next_interval_between_samples = 2 * _current_interval_between_samples;
                 k = 0.15;
                 _next_sample_size = (1 + k) * _current_sample_size;
