@@ -27,23 +27,27 @@ Options:
 -h,--help   show this help message and exit
   General options:
     -v, --verbose       Verbose mode.
+                        Default: --brief
     -f FILE, --file FILE
+                        something
+    -o FILE, --output FILE
                         something
     -p , --sniffer
                         something
-    -s FILE, --systematic_count FILE
+    -s INTERVAL, --systematic_count INTERVAL
+                        Specifies the interval between samples
+    -t INTERVAL, --systematic_time INTERVAL
+                        Specifies the interval in ms between samples.
+    -r RATE, --simple_random RATE
                         something
-    -t FILE, --systematic_time FILE
-                        something
-    -r FILE, --simple_random FILE
-                        something
-    -a FILE, --random_additive FILE
-                        something
+    -a RATE, --random_additive RATE
+                        Specifies the average_sampling_rate. On average each sampling will occur every RATE packets
     -m , --multi_adaptive
+                        something
 
 ```
 ### And a real test using multi-adaptive selection scheme
-The network traffic used here was captured in a controlled environment and be downloaded [here](http://download_trace_usado_nos_teste.com).
+The network traffic used here was captured in a controlled environment and can be downloaded [here](http://download_trace_usado_nos_teste.com).
 
 TODO
 -----------
