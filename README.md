@@ -9,7 +9,6 @@ Colons can be used to align columns.
 
 | Selection Scheme         | Trigger  |
 | :----------------------: |:--------:|
-| :----------------------: |:--------:|
 | Systematic Count-based   | position |
 | Systematic Time-based    | time     |
 | Simple Random            | position |
