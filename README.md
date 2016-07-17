@@ -5,8 +5,6 @@ What is it?
 -----------
 
 
-Colons can be used to align columns.
-
 | Selection Scheme         | Trigger  |
 | ------------------------ | -------- |
 | Systematic Count-based   | position |
@@ -19,25 +17,33 @@ Colons can be used to align columns.
 Usage
 -----------
 
-
-{"verbose", no_argument,       &verbose_flag, 1},
-            {"brief",   no_argument,       &verbose_flag, 0},
-            /* These options don’t set a flag.
-             We distinguish them by their indices. */
-            {"file",  required_argument, 0, 'f'},
-            {"out",  required_argument, 0, 'o'},
-            {"sniffer",     no_argument, 0, 'p'},
-            {"systematic_count",     required_argument,       0, 's'},
-            {"systematic_time",     required_argument,       0, 't'},
-
-            {"simple_random",  required_argument,       0, 'r'},
-            {"random_additive",  required_argument, 0, 'a'},
-            {"stratified",  required_argument, 0, 'l'},
-            {"multi_adaptive",    no_argument, 0, 'm'},
-
 Here goes the help:
-### Another deeper heading
-[link](http://download_trace_usado_nos_teste.com).
+
+```
+Usage: ./sampling [options]
+
+
+Options:
+-h,--help   show this help message and exit
+  General options:
+    -v, --verbose       Verbose mode.
+    -f FILE, --file FILE
+                        something
+    -p , --sniffer
+                        something
+    -s FILE, --systematic_count FILE
+                        something
+    -t FILE, --systematic_time FILE
+                        something
+    -r FILE, --simple_random FILE
+                        something
+    -a FILE, --random_additive FILE
+                        something
+    -m , --multi_adaptive
+
+```
+### And a real test using multi-adaptive selection scheme
+The network traffic used here was captured in a controlled environment and be downloaded [here](http://download_trace_usado_nos_teste.com).
 
 TODO
 -----------
