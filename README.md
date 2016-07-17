@@ -1,9 +1,10 @@
-Amostragem de Pacotes para Classificação Online de Tráfego Internet Cifrado
+Packet Sampling for Online Classification of Encrypted Internet Traffic
 =======
 
 What is it?
 -----------
 
+The choice of a specific sampling strategy requires a broad and clear understanding of the capabilities and limitations of each technique and the specific behavior of the network on which it will be applied. Therefore, to properly consider a greater number of traffic scenarios and specific needs this tool provides a wider collection of packet sampling techniques, presented in the table.
 
 | Selection Scheme         | Trigger  |
 | ------------------------ | -------- |
@@ -13,15 +14,16 @@ What is it?
 | Additive Random          | position |
 | Multi-Adaptive           | time     |
 
-
 Usage
 -----------
-
 
 As simple as providing the selection scheme. Here goes the help:
 
 ```
 user$ ./sampling --help
+
+Packet sampling for online classification of encrypted internet traffic.
+Ricardo Oliveira '16
 
 Usage: ./sampling [options]
 
@@ -33,7 +35,7 @@ Options:
     -v, --verbose       Verbose mode.
                         Default: brief
     -f FILE, --file FILE
-                        Open a file with previous catpured traffic
+                        Open a file with previous catpured traffic.
     -o FILE, --output FILE
                         Save captured traffic to a pcap file.
     -p , --sniffer
@@ -47,7 +49,7 @@ Options:
                         [0 , 2*sampling rate-2].
     -a N, --random_additive N
                         Specifies the average sampling rate.
-                        On average each sampling will occur every N packets
+                        On average each sampling will occur every N packets.
     -m , --multi_adaptive
                         Default values: min next sample size = 10000 ms
                                         max next samplesize = 500000 ms
@@ -61,3 +63,4 @@ The network traffic used here was captured in a controlled environment and can b
 
 TODO
 -----------
+
