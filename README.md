@@ -41,7 +41,8 @@ Options:
     -r RATE, --simple_random RATE
                         something
     -a RATE, --random_additive RATE
-                        Specifies the average_sampling_rate. On average each sampling will occur every RATE packets
+                        Specifies the average_sampling_rate.
+                        On average each sampling will occur every RATE packets
     -m , --multi_adaptive
                         something
 
