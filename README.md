@@ -17,14 +17,18 @@ What is it?
 Usage
 -----------
 
-Here goes the help:
+
+As simple as providing the selection scheme. Here goes the help:
 
 ```
+user$ ./sampling --help
+
 Usage: ./sampling [options]
 
 
 Options:
 -h,--help   show this help message and exit
+
   General options:
     -v, --verbose       Verbose mode.
                         Default: brief
