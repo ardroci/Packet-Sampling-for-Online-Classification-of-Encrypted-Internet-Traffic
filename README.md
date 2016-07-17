@@ -27,7 +27,6 @@ Ricardo Oliveira '16
 
 Usage: ./sampling [options]
 
-
 Options:
 -h,--help   show this help message and exit
 
@@ -35,9 +34,10 @@ Options:
     -v, --verbose       Verbose mode.
                         Default: brief
     -f FILE, --file FILE
-                        Open a file with previous catpured traffic.
+                        Open a file with previous captured traffic.
     -o FILE, --output FILE
-                        Save captured traffic to a pcap file.
+                        Specifies the directory where the captured
+                        traffic is saved in a pcap file.
     -p , --sniffer
                         No selection scheme is applied to the captured traffic.
     -s INTERVAL, --systematic_count INTERVAL
@@ -56,10 +56,16 @@ Options:
                                         min interval between samples = 10000 ms
                                         max interval between samples = 500000 ms
                                         window size = 10
-
 ```
+
 ### And a real test using multi-adaptive selection scheme
 The network traffic used here was captured in a controlled environment and can be downloaded [here](http://download_trace_usado_nos_teste.com).
+
+```
+user$ ./sampling --file captured\_traffic.pcap --output /user/home/Desktop/  --multi_adaptive
+
+
+```
 
 TODO
 -----------
