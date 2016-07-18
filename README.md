@@ -64,7 +64,7 @@ The network traffic used here was captured in a controlled environment and can b
 ```
 user$ ./sampling --file captured-traffic.pcap --output /user/home/Desktop/  --multi_adaptive
 
-Statistical Parameters
+                Statistical Parameters
 
 First Packet Fri Aug  5 18:48:03 2011
 Last  Packet Fri Aug  5 19:06:19 2011
@@ -93,4 +93,4 @@ Throughput Estimation:
 
 TODO
 -----------
-
+[//]: # (This may be the most platform independent comment)
