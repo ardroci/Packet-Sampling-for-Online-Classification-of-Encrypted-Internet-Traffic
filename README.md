@@ -62,8 +62,32 @@ Options:
 The network traffic used here was captured in a controlled environment and can be downloaded [here](http://download_trace_usado_nos_teste.com).
 
 ```
-user$ ./sampling --file captured\_traffic.pcap --output /user/home/Desktop/  --multi_adaptive
+user$ ./sampling --file captured-traffic.pcap --output /user/home/Desktop/  --multi_adaptive
 
+Statistical Parameters
+
+First Packet Fri Aug  5 18:48:03 2011
+Last  Packet Fri Aug  5 19:06:19 2011
+Elapsed Time 1095.917873 s
+
+Overhead :
+  Number of packets captured : 1890723
+  Number of packets selected : 422516 (22.34680 %)
+  Appropriate sample size :    32971
+
+  Total Data Volume :          1393631968 Bytes
+  Sampled Data Volume :        311384916 Bytes
+  Number of Samples :          42535
+
+Throughput Estimation:
+  Total Throughput :           1271657 bytes/s
+  Sampled Throughput :         284131 bytes/s
+  Total Peak to average :      1.280
+  Sampled Peak to average :    1.285
+  Correlation :                0.999
+  Relative Error :             0.001
+  Mean :                       737
+  Standard Deviation :         682.867
 
 ```
 
