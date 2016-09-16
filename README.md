@@ -26,7 +26,7 @@ If you’re running on Linux, you probably already have GPG (GNU Privacy Guard) 
 
 Once you’ve installed GPG, you’ll need to download and import a copy of the Kali Linux official key. Do this with the following command:
 ```
-$ gpg --keyserver hkp://keys.gnupg.net --recv-key CE994164
+user$ gpg --keyserver hkp://keys.gnupg.net --recv-key CE994164
 ```
 
 Your output should look like this:
@@ -39,7 +39,7 @@ gpg:               imported: 1  (RSA: 1)
 Verify that the key is properly installed with the command:
 
 ```
-gpg --list-keys --with-fingerprint  CE994164
+user$ gpg --list-keys --with-fingerprint  CE994164
 ```
 
 The output will look like this:
@@ -63,7 +63,7 @@ Before verifying the checksums of the file, you must ensure that the SHA2SUM fil
 Once you have downloaded both SHA2SUM and SHA2SUM.asc, you can verify the signature as follows:
 
 ```
-gpg --verify SHA2SUM.asc SHA2SUM
+user$ gpg --verify SHA2SUM.asc SHA2SUM
 gpg: Signature made Fri Sep 16 14:25:42 2016 WEST using RSA key ID CE994164
 gpg: Good signature from "Ricardo Costa Oliveira <rcoliveira314@gmail.com>" [ultimate]
 ```
@@ -71,7 +71,7 @@ gpg: Good signature from "Ricardo Costa Oliveira <rcoliveira314@gmail.com>" [ult
 If you did get the “Good signature” response, you can now be assured that the checksum in the SHA2SUM file was actually provided by the development team. All that remains to be done to complete the verification is to validate that the signature you compute from the file you’ve downloaded matches the one in the SHA2SUM file. You can do that on Linux or OS X with the following command (assuming that the file is named “Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado-master.zip” and is in your working directory):
 
 ```
-grep Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado-master.zip SHA2SUM_Packet_Sampling_for_Online_Classification_of_Encrypted_Internet_Traffic | shasum -a 256 -c
+user$ grep Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado-master.zip SHA2SUM_Packet_Sampling_for_Online_Classification_of_Encrypted_Internet_Traffic | shasum -a 256 -c
 ```
 
 If the image is successfully authenticated, the response will look like this:
