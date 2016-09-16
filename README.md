@@ -111,7 +111,37 @@ gpg: key CE994164: public key "Ricardo Costa Oliveira <rcoliveira314@gmail.com>"
 gpg: Total number processed: 1
 gpg:               imported: 1  (RSA: 1)
 ```
+Verify that the key is properly installed with the command:
 
+```
+gpg --list-keys --with-fingerprint  CE994164
+```
+
+The output will look like this:
+
+```
+pub   4096R/CE994164 2016-01-13 [expires: 2020-01-13]
+      Key fingerprint = 10C9 CEE5 72EE 77A2 C950  39AA 4A02 4A0C CE99 4164
+uid       [ultimate] Ricardo Costa Oliveira <rcoliveira314@gmail.com>
+sub   4096R/C49636FA 2016-01-13 [expires: 2020-01-13]
+```
+
+Once you have downloaded both SHA2SUM and SHA2SUM.gpg, you can verify the signature as follows:
+```
+gpg --verify SHA2SUM.asc SHA2SUM
+gpg: Signature made Fri Sep 16 14:25:42 2016 WEST using RSA key ID CE994164
+gpg: Good signature from "Ricardo Costa Oliveira <rcoliveira314@gmail.com>" [ultimate]
+```
+
+If you did get the “Good signature” response, you can now be assured that the checksum in the SHA2SUM file was actually provided by the development team. All that remains to be done to complete the verification is to validate that the signature you compute from the file you’ve downloaded matches the one in the SHA2SUM file. You can do that on Linux or OS X with the following command (assuming that the file is named “Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado-master.zip” and is in your working directory):
+```
+grep Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado-master.zip
+```
+If the image is successfully authenticated, the response will look like this:
+```
+SHA2SUM_Packet_Sampling_for_Online_Classification_of_Encrypted_Internet_Traffic | shasum -a 256 -c
+Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado-master.zip: OK
+```
 <!--- 
 TODO
 -----------
