@@ -91,6 +91,26 @@ Throughput Estimation:
 
 ```
 
+Usage
+-----------
+
+If you’re running on Linux, you probably already have GPG (GNU Privacy Guard) installed. If you’re on Windows or OS X, you’ll need to install the appropriate version for your platform.
+
+  Markup : *  If you’re on a PC running Windows, download and install GPG4Win from [here](http://gpg4win.org/download.html). 
+  Markup : *  If you’re on a Macintosh running OS X, download and install GPGTools from [here](https://gpgtools.org/). Since Windows does not have the native ability to calculate SHA1 checksums, you will also need a utility such as [Microsoft File Checksum Integrity Verifier](http://www.microsoft.com/en-us/download/details.aspx?id=11533) or [Hashtab](http://www.implbits.com/HashTab/HashTabWindows.aspx) to verify your download.
+
+Once you’ve installed GPG, you’ll need to download and import a copy of the Kali Linux official key. Do this with the following command:
+```
+$ gpg --keyserver hkp://keys.gnupg.net --recv-key CE994164
+```
+
+Your output should look like this:
+
+```
+gpg: key CE994164: public key "Ricardo Costa Oliveira <rcoliveira314@gmail.com>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+```
 
 <!--- 
 TODO
