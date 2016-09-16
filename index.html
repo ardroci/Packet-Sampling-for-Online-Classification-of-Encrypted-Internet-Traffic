@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Packet Sampling for Online Classification of Encrypted Internet Traffic by rcostaoliveira</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Packet Sampling for Online Classification of Encrypted Internet Traffic</h1>
+      <h2 class="project-tagline">Amostragem de Pacotes para Classificacao Online de Trafego Internet Cifrado</h2>
+      <a href="https://github.com/rcostaoliveira/Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado" class="btn">View on GitHub</a>
+      <a href="https://github.com/rcostaoliveira/Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/rcostaoliveira/Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="packet-sampling-for-online-classification-of-encrypted-internet-traffic" class="anchor" href="#packet-sampling-for-online-classification-of-encrypted-internet-traffic" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Packet Sampling for Online Classification of Encrypted Internet Traffic</h1>
+
+<h2>
+<a id="what-is-it" class="anchor" href="#what-is-it" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is it?</h2>
+
+<p>The choice of a specific sampling strategy requires a broad and clear understanding of the capabilities and limitations of each technique and the specific behavior of the network on which it will be applied. Therefore, to properly consider a greater number of traffic scenarios and specific needs this tool provides a wider collection of packet sampling techniques, presented in the table.</p>
+
+<table>
+<thead>
+<tr>
+<th>Selection Scheme</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Systematic Count-based</td>
+<td>position</td>
+</tr>
+<tr>
+<td>Systematic Time-based</td>
+<td>time</td>
+</tr>
+<tr>
+<td>Simple Random</td>
+<td>position</td>
+</tr>
+<tr>
+<td>Additive Random</td>
+<td>position</td>
+</tr>
+<tr>
+<td>Multi-Adaptive</td>
+<td>time</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>As simple as providing the selection scheme. Here goes the help:</p>
+
+<pre><code>user$ ./sampling --help
+
+Packet sampling for online classification of encrypted internet traffic.
+Ricardo Oliveira '16
+
+Usage: ./sampling [options]
+
+Options:
+-h,--help   show this help message and exit
+
+  General options:
+    -v, --verbose       Verbose mode.
+                        Default: brief
+    -f FILE, --file FILE
+                        Open a file with previous captured traffic.
+    -o FILE, --output FILE
+                        Specifies the directory where the captured
+                        traffic is saved in a pcap file.
+    -p , --sniffer
+                        No selection scheme is applied to the captured traffic.
+    -s INTERVAL, --systematic_count INTERVAL
+                        Sets the interval between samples to INTERVAL.
+    -t INTERVAL, --systematic_time INTERVAL
+                        Sets the interval between samples to INTERVAL ms.
+    -r N, --simple_random N
+                        Sets the interval between samples to
+                        [0 , 2*sampling rate-2].
+    -a N, --random_additive N
+                        Specifies the average sampling rate.
+                        On average each sampling will occur every N packets.
+    -m , --multi_adaptive
+                        Default values: min next sample size = 10000 ms
+                                        max next samplesize = 500000 ms
+                                        min interval between samples = 10000 ms
+                                        max interval between samples = 500000 ms
+                                        window size = 10
+</code></pre>
+
+<h3>
+<a id="and-a-real-test-using-multi-adaptive-selection-scheme" class="anchor" href="#and-a-real-test-using-multi-adaptive-selection-scheme" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>And a real test using multi-adaptive selection scheme</h3>
+
+<p>The network traffic used here was captured in a controlled environment and can be downloaded <a href="http://download_trace_usado_nos_teste.com">here</a>.</p>
+
+<pre><code>user$ ./sampling --file captured-traffic.pcap --output /user/home/Desktop/  --multi_adaptive
+
+                Statistical Parameters
+
+First Packet Fri Aug  5 18:48:03 2011
+Last  Packet Fri Aug  5 19:06:19 2011
+Elapsed Time 1095.917873 s
+
+Overhead :
+  Number of packets captured : 1890723
+  Number of packets selected : 422516 (22.34680 %)
+  Appropriate sample size :    32971
+
+  Total Data Volume :          1393631968 Bytes
+  Sampled Data Volume :        311384916 Bytes
+  Number of Samples :          42535
+
+Throughput Estimation:
+  Total Throughput :           1271657 bytes/s
+  Sampled Throughput :         284131 bytes/s
+  Total Peak to average :      1.280
+  Sampled Peak to average :    1.285
+  Correlation :                0.999
+  Relative Error :             0.001
+  Mean :                       737
+  Standard Deviation :         682.867
+
+</code></pre>
+
+
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/rcostaoliveira/Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado">Packet Sampling for Online Classification of Encrypted Internet Traffic</a> is maintained by <a href="https://github.com/rcostaoliveira">rcostaoliveira</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
