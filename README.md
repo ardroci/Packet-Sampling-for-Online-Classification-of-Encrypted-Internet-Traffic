@@ -54,7 +54,7 @@ You’re now set up to validate your download.
 
 This method does not rely on the integrity of the web site you downloaded the file from, only the official development team key that you install independently. To verify your file this way, you will need to download three files:
 
-   Markup : *  The ZIP file itself (e.g. Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado-master.zip)
+            *  The ZIP file itself (e.g. Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado-master.zip)
             *  The file containing the calculated SHA256 hash for the ZIP, SHA2SUM
             *  The signed version of that file, SHA2SUM.asc
 
