@@ -76,7 +76,7 @@ If you did get the “Good signature” response, you can now be assured that th
 user$ grep Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado-master.zip SHA2SUM_Packet_Sampling_for_Online_Classification_of_Encrypted_Internet_Traffic | shasum -a 256 -c
 ```
 
-If the image is successfully authenticated, the response will look like this:
+If the file is successfully authenticated, the response will look like this:
 
 ```
 Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado-master.zip: OK
