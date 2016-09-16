@@ -122,7 +122,7 @@ Options:
     -m , --multi_adaptive
                         Default values: min next sample size = 10000 ms
                                         max next samplesize = 500000 ms
-                                        min interval between samples = 10000 ms
+                                        min interval between samples =  10000 ms
                                         max interval between samples = 500000 ms
                                         window size = 10
 ```
@@ -145,12 +145,12 @@ Overhead :
   Appropriate sample size :    32971
 
   Total Data Volume :          1393631968 Bytes
-  Sampled Data Volume :        311384916 Bytes
+  Sampled Data Volume :        311384916  Bytes
   Number of Samples :          42535
 
 Throughput Estimation:
   Total Throughput :           1271657 bytes/s
-  Sampled Throughput :         284131 bytes/s
+  Sampled Throughput :         284131  bytes/s
   Total Peak to average :      1.280
   Sampled Peak to average :    1.285
   Correlation :                0.999
