@@ -56,7 +56,7 @@ You’re now set up to validate your download.
 
 This method does not rely on the integrity of the web site you downloaded the file from, only the official development team key that you install independently. To verify your file this way, you will need to download three files:
 
-   *  The ZIP file itself (e.g. Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado-master.zip)
+   *  The ZIP file itself (e.g. Packet-Sampling-for-Online-Classification-of-Encrypted-Internet-Traffic-master.zip)
    *  The file containing the calculated SHA256 hash for the ZIP, SHA2SUM
    *  The signed version of that file, SHA2SUM.asc
 
@@ -65,7 +65,7 @@ Before verifying the checksums of the file, you must ensure that the SHA2SUM fil
 Once you have downloaded both SHA2SUM and SHA2SUM.asc, you can verify the signature as follows:
 
 ```
-$ gpg --verify SHA2SUM.asc SHA2SUM
+$ gpg --verify SHA2SUM_Packet_Sampling_for_Online_Classification_of_Encrypted_Internet_Traffic.asc SHA2SUM_Packet_Sampling_for_Online_Classification_of_Encrypted_Internet_Traffic
 gpg: Signature made Fri Sep 16 14:25:42 2016 WEST using RSA key ID CE994164
 gpg: Good signature from "Ricardo Costa Oliveira <rcoliveira314@gmail.com>" [ultimate]
 ```
@@ -73,13 +73,13 @@ gpg: Good signature from "Ricardo Costa Oliveira <rcoliveira314@gmail.com>" [ult
 If you did get the “Good signature” response, you can now be assured that the checksum in the SHA2SUM file was actually provided by the development team. All that remains to be done to complete the verification is to validate that the signature you compute from the file you’ve downloaded matches the one in the SHA2SUM file. You can do that on Linux or OS X with the following command (assuming that the file is named “Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado-master.zip” and is in your working directory):
 
 ```
-$ grep Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado-master.zip SHA2SUM_Packet_Sampling_for_Online_Classification_of_Encrypted_Internet_Traffic | shasum -a 256 -c
+$ grep Packet-Sampling-for-Online-Classification-of-Encrypted-Internet-Traffic-master.zip SHA2SUM_Packet_Sampling_for_Online_Classification_of_Encrypted_Internet_Traffic | shasum -a 256 -c
 ```
 
 If the file is successfully authenticated, the response will look like this:
 
 ```
-Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado-master.zip: OK
+Packet-Sampling-for-Online-Classification-of-Encrypted-Internet-Traffic-master.zip: OK
 ```
 Once you’ve downloaded and verified your file, you can proceed.
 
