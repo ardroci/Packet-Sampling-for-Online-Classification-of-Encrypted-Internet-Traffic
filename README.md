@@ -26,7 +26,7 @@ If you’re running on Linux, you probably already have GPG (GNU Privacy Guard) 
 
 Since Windows does not have the native ability to calculate SHA1 checksums, you will also need a utility such as [Microsoft File Checksum Integrity Verifier](http://www.microsoft.com/en-us/download/details.aspx?id=11533) or [Hashtab](http://www.implbits.com/HashTab/HashTabWindows.aspx) to verify your download.
 
-Once you’ve installed GPG, you’ll need to download and import a copy of the Kali Linux official key. Do this with the following command:
+Once you’ve installed GPG, you’ll need to download and import a copy of the my key. Do this with the following command:
 ```
 $ gpg --keyserver hkp://keys.gnupg.net --recv-key CE994164
 ```
