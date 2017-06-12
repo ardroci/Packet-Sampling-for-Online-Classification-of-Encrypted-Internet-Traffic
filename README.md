@@ -73,7 +73,7 @@ gpg: Good signature from "Ricardo Costa Oliveira <rcoliveira314@gmail.com>" [ult
 If you did get the “Good signature” response, you can now be assured that the checksum in the SHA2SUM file was actually provided by the development team. All that remains to be done to complete the verification is to validate that the signature you compute from the file you’ve downloaded matches the one in the SHA2SUM file. You can do that on Linux or OS X with the following command (assuming that the file is named “Amostragem-de-Pacotes-para-Classificacao-Online-de-Trafego-Internet-Cifrado-master.zip” and is in your working directory):
 
 ```
-$ grep Packet-Sampling-for-Online-Classification-of-Encrypted-Internet-Traffic-master.zip SHA2SUM_Packet_Sampling_for_Online_Classification_of_Encrypted_Internet_Traffic | shasum -a 256 -c
+$ grep Packet-Sampling-for-Online-Classification-of-Encrypted-Internet-Traffic-master.zip SHA2SUM | shasum -a 256 -c
 ```
 
 If the file is successfully authenticated, the response will look like this:
